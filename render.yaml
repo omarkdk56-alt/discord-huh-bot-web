@@ -1,0 +1,19 @@
+services:
+  - name: huhbot
+    github_repo: your-github-username/huhbot
+    branch: main
+    build_command: pip install -r requirements.txt
+    start_command: python main.py
+    env_vars:
+      - key: BOT_TOKEN
+        from_service: secret
+        sync: false
+      - key: CLIENT_ID
+        value: "1452460095085744238"
+      - key: CLIENT_SECRET
+        from_service: secret
+        sync: false
+      - key: WEB_URL
+        value: "https://huhbot.onrender.com"
+    instance_type: free
+    health_check_path: /
